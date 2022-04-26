@@ -1,6 +1,8 @@
 package ecrypto
 
-import "fmt"
+import (
+	"fmt"
+)
 
 const (
 	b16encode = "0123456789abcdef"

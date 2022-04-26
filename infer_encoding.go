@@ -1,8 +1,12 @@
 package ecrypto
 
-import "fmt"
+import (
+	"strings"
+)
 
 func InferEncoding(s string) []byte {
+	s = strings.ReplaceAll(s, " ", "")
+
 	bits := true
 	hex := true
 	b64 := true
@@ -11,7 +15,7 @@ func InferEncoding(s string) []byte {
 
 	if len(b)%2 != 0 {
 		// default to ascii
-		fmt.Println("inferred input to be ASCII")
+		//fmt.Println("inferred input to be ASCII")
 		return []byte(s)
 	}
 
@@ -43,7 +47,7 @@ func InferEncoding(s string) []byte {
 
 	if Trues(bits, hex, b64) == 0 {
 		// default to ascii
-		fmt.Println("inferred input to be ASCII")
+		//fmt.Println("inferred input to be ASCII")
 		return []byte(s)
 	}
 
@@ -58,17 +62,17 @@ func InferEncoding(s string) []byte {
 	}
 
 	if bits {
-		fmt.Println("inferred input to be bits")
+		//fmt.Println("inferred input to be bits")
 		return MustBitsToBytes(s)
 	}
 
 	if hex {
-		fmt.Println("inferred input to be hex")
+		//fmt.Println("inferred input to be hex")
 		return MustHexToBytes(s)
 	}
 
 	if b64 {
-		fmt.Println("inferred input to be b64")
+		//fmt.Println("inferred input to be b64")
 		return MustB64ToBytes(s)
 	}
 
